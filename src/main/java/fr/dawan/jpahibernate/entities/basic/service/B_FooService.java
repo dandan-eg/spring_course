@@ -23,4 +23,14 @@ public class B_FooService {
         // En utilisant la clé primaire (ID). Si elle est différente de la valeur par défaut alors c'est un update
         return repository.save(foo);
     }
+
+    public B_Foo byId(long id) {
+        return repository.findById(id) // Par défaut findById retourne un optionnel contenant ou non l'objet trouvé
+                .orElse(null); // orElse permet de définir une valeur à retourner dans le cas où l'optionnel serait vide.
+    }
+
+    public void deleteById(long id) {
+        repository.deleteById(id);
+        // repository.delete(entity); pour supprimer un objet déjà récupéré
+    }
 }
