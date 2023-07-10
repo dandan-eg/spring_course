@@ -85,4 +85,124 @@ public class B_Foo {
 
     @ManyToMany
     private List<MTMBD> manyToManyBidirectional;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getStr() {
+        return str;
+    }
+
+    public void setStr(String str) {
+        this.str = str;
+    }
+
+    public int getAnInt() {
+        return anInt;
+    }
+
+    public void setAnInt(int anInt) {
+        this.anInt = anInt;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public BigDecimal getPercent() {
+        return percent;
+    }
+
+    public void setPercent(BigDecimal percent) {
+        this.percent = percent;
+    }
+
+    public boolean isaBoolean() {
+        return aBoolean;
+    }
+
+    public void setaBoolean(boolean aBoolean) {
+        this.aBoolean = aBoolean;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalDateTime getMoment() {
+        return moment;
+    }
+
+    public void setMoment(LocalDateTime moment) {
+        this.moment = moment;
+    }
+
+    public Enumeration getEnumeration() {
+        return enumeration;
+    }
+
+    public void setEnumeration(Enumeration enumeration) {
+        this.enumeration = enumeration;
+    }
+
+    public B_Bar getBar() {
+        return bar;
+    }
+
+    public void setBar(B_Bar bar) {
+        this.bar = bar;
+    }
+
+    public OTO getOneToOne() {
+        return oneToOne;
+    }
+
+    public void setOneToOne(OTO oneToOne) {
+        this.oneToOne = oneToOne;
+    }
+
+    public MTO getManyToOne() {
+        return manyToOne;
+    }
+
+    public void setManyToOne(MTO manyToOne) {
+        this.manyToOne = manyToOne;
+    }
+
+    public Set<OTM> getOneToMany() {
+        return oneToMany;
+    }
+
+    public void setOneToMany(Set<OTM> oneToMany) {
+        this.oneToMany = oneToMany;
+    }
+
+    public List<MTM> getManyToMany() {
+        return manyToMany;
+    }
+
+    public void setManyToMany(List<MTM> manyToMany) {
+        this.manyToMany = manyToMany;
+    }
+
+    public List<MTMBD> getManyToManyBidirectional() {
+        return manyToManyBidirectional;
+    }
+
+    public void setManyToManyBidirectional(List<MTMBD> manyToManyBidirectional) {
+        this.manyToManyBidirectional = manyToManyBidirectional;
+    }
 }
