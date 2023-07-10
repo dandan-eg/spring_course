@@ -68,12 +68,21 @@ public class B_Foo {
     @Embedded // Les champs de la classe en dessous sont inclus dans la table de cette classe
     private B_Bar bar;
 
+
+    // ***ToOne -> Par une colonne dans la classe : fais une référence à un enregistrement unique
+    // C'est pour cela que ces annotations portent sur unique Objet
     @OneToOne
     private OTO oneToOne;
     @ManyToOne
     private MTO manyToOne;
+
+    // ***ToMany -> Par une table d'association : possibilité de référencer plusieurs enregistrements
+    // et portent donc toujours sur des Collections
     @OneToMany
     private Set<OTM> oneToMany;
     @ManyToMany
     private List<MTM> manyToMany;
+
+    @ManyToMany
+    private List<MTMBD> manyToManyBidirectional;
 }
