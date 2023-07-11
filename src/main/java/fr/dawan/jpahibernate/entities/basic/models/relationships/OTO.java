@@ -7,13 +7,14 @@ public class OTO {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(columnDefinition = "VARCHAR(50)")
-    private String UUID;
+    private String id;
 
-    public String getUUID() {
-        return UUID;
+
+    public String getId() {
+        return id;
     }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
+    public void setId(String id) {
+        this.id = id;
     }
 }

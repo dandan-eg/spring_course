@@ -1,44 +1,35 @@
 package fr.dawan.jpahibernate.entities.basic.service;
 
 import fr.dawan.jpahibernate.entities.basic.dao.B_FooRepository;
+import fr.dawan.jpahibernate.entities.basic.generic.GenericService;
 import fr.dawan.jpahibernate.entities.basic.models.B_Foo;
 import fr.dawan.jpahibernate.entities.basic.models.relationships.OTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
-public class B_FooService {
-    private final B_FooRepository repository;
-
-    public B_FooService(B_FooRepository repository) {
-        this.repository = repository;
-    }
-
-    public List<B_Foo> all() {
-        return repository.findAll();
-    }
-
-    public B_Foo saveOrUpdate(B_Foo foo) {
-        // Comment JPA sait s'il doit créer (INSERT INTO) ou mettre à jour (UPDATE ... SET) ?
-        // En utilisant la clé primaire (ID). Si elle est différente de la valeur par défaut alors c'est un update
-        return repository.save(foo);
-    }
-
-    public B_Foo byId(long id) {
-        return repository.findById(id) // Par défaut findById retourne un optionnel contenant ou non l'objet trouvé
-                .orElse(null); // orElse permet de définir une valeur à retourner dans le cas où l'optionnel serait vide.
-    }
-
-    public void deleteById(long id) {
-        repository.deleteById(id);
-        // repository.delete(entity); pour supprimer un objet déjà récupéré
+public class B_FooService extends GenericService<B_Foo, Long, B_FooRepository> {
+    protected B_FooService(B_FooRepository repository) {
+        super(repository);
     }
 
     public B_Foo addOTO(long fooId, OTO oto ) {
-        // Récupérer le bon B_Foo
-        // Ajouter l'objet
-        // Sauver la modification
-        return null;
+        /*Optional<B_Foo> optionalBFoo = repository.findById(fooId);
+        if(optionalBFoo.isPresent()) {
+            B_Foo viaIsPresent = optionalBFoo.get();
+        }
+
+        optionalBFoo.ifPresent(bFoo -> {
+            // ne sera exécuté QUE SI l'optionnel n'est pas vide (que l'objet a été trouvé)
+            System.out.println("bFoo.getStr() = \u001B[31m" + bFoo.getStr() + "\u001B[0m");
+            // Attention ifPresent ne retourne pas de valeur (Consumer)
+        });
+*/
+        return repository.findById(fooId).map(bFoo -> {
+            bFoo.setOneToOne(oto);
+            return repository.save(bFoo);
+        }).orElse(null);
     }
 }
