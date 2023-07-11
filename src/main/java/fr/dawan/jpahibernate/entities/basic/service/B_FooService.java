@@ -2,6 +2,7 @@ package fr.dawan.jpahibernate.entities.basic.service;
 
 import fr.dawan.jpahibernate.entities.basic.dao.B_FooRepository;
 import fr.dawan.jpahibernate.entities.basic.models.B_Foo;
+import fr.dawan.jpahibernate.entities.basic.models.relationships.OTO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,5 +33,12 @@ public class B_FooService {
     public void deleteById(long id) {
         repository.deleteById(id);
         // repository.delete(entity); pour supprimer un objet déjà récupéré
+    }
+
+    public B_Foo addOTO(long fooId, OTO oto ) {
+        // Récupérer le bon B_Foo
+        // Ajouter l'objet
+        // Sauver la modification
+        return null;
     }
 }
